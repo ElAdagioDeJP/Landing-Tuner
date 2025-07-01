@@ -276,28 +276,11 @@ p {
 
 
 
-.view-btn:hover {
-  background: linear-gradient(90deg, var(--primary-color) 60%, var(--info-color) 100%);
-  color: #fff;
-}
-
-
-
-.deactivate-btn {
-  background: linear-gradient(90deg, var(--warning-color) 60%, var(--accent-color) 100%);
-  color: #fff;
-}
-
-.deactivate-btn:hover {
-  background: linear-gradient(90deg, var(--accent-color) 60%, var(--warning-color) 100%);
-  color: #fff;
-}
-
 
 
 .activate-btn {
-  background: linear-gradient(90deg, var(--primary-color) 60%, var(--accent-color) 100%);
-  color: #fff;
+  background:(--primary-color);
+  
 }
 
 
@@ -310,7 +293,7 @@ p {
 
 /* Estilos para los controles de DataTables (paginación, búsqueda) */
 .dataTables_wrapper .dataTables_filter input {
-  border: 1px solid #ccc;
+  border: 1px solid var(--accent-color);
   border-radius: 4px;
   padding: 6px;
   margin-left: 0.5em;
@@ -388,7 +371,7 @@ p {
   padding: 2rem 2.5rem;
   max-height: 70vh;
   overflow-y: auto;
-  background: #fff;
+  background: var(--accent-color);
   border-radius: 16px;
   box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
 }
@@ -400,7 +383,7 @@ p {
   gap: 2rem;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1.5px solid #e0e0e0;
+  border-bottom: 1.5px solida var(--extra-color-1);
 }
 
 
