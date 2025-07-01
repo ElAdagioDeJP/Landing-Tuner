@@ -1,0 +1,97 @@
+<div class="dashboard-container">
+  <header>
+    <h1>Panel de Administración de Estilos</h1>
+    <p>Gestiona los estilos de la landing page para asegurar una experiencia de usuario coherente y atractiva.</p>
+  </header>
+
+  <section class="styles-list">
+    <h2>Estilos Existentes</h2>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Activo</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let style of styles">
+            <td>{{ style.name }}</td>
+            <td><span [class.active]="style.isActive">{{ style.isActive ? 'Sí' : 'No' }}</span></td>
+            <td class="actions">
+              <button (click)="selectStyle(style)" aria-label="Editar estilo {{ style.name }}">Editar</button>
+              <button (click)="deleteStyle(style.id)" class="delete" aria-label="Eliminar estilo {{ style.name }}">Eliminar</button>
+              <button (click)="activateStyle(style)" [disabled]="style.isActive" aria-label="Activar estilo {{ style.name }}">Activar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button (click)="createStyle()" class="create-new">Crear Nuevo Estilo</button>
+  </section>
+
+  <section *ngIf="selectedStyle" class="style-editor">
+    <h2>{{ isNewStyle ? 'Crear Nuevo Estilo' : 'Editar Estilo: ' + selectedStyle.name }}</h2>
+    <form (ngSubmit)="saveStyle()" #styleForm="ngForm">
+      <div class="form-group">
+        <label for="styleName">Nombre del Estilo</label>
+        <input type="text" id="styleName" [(ngModel)]="selectedStyle.name" name="name" required #name="ngModel">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
+          El nombre del estilo es requerido.
+        </div>
+      </div>
+
+      <h3>Paleta de Colores</h3>
+      <div class="form-grid">
+        <div class="form-group color-group">
+          <label for="primaryColor">Color Primario</label>
+          <input type="color" id="primaryColor" [(ngModel)]="selectedStyle.primaryColor" name="primaryColor">
+          <span>{{ selectedStyle.primaryColor }}</span>
+        </div>
+        <div class="form-group color-group">
+          <label for="secondaryColor">Color Secundario</label>
+          <input type="color" id="secondaryColor" [(ngModel)]="selectedStyle.secondaryColor" name="secondaryColor">
+          <span>{{ selectedStyle.secondaryColor }}</span>
+        </div>
+        <div class="form-group color-group">
+          <label for="accentColor">Color de Acento</label>
+          <input type="color" id="accentColor" [(ngModel)]="selectedStyle.accentColor" name="accentColor">
+          <span>{{ selectedStyle.accentColor }}</span>
+        </div>
+        <div class="form-group color-group">
+          <label for="textColor">Color de Texto</label>
+          <input type="color" id="textColor" [(ngModel)]="selectedStyle.textColor" name="textColor">
+          <span>{{ selectedStyle.textColor }}</span>
+        </div>
+        <div class="form-group color-group">
+          <label for="extraColor1">Extra Color 1</label>
+          <input type="color" id="extraColor1" [(ngModel)]="selectedStyle.extraColor1" name="extraColor1">
+          <span>{{ selectedStyle.extraColor1 }}</span>
+        </div>
+        <div class="form-group color-group">
+          <label for="extraColor2">Extra Color 2</label>
+          <input type="color" id="extraColor2" [(ngModel)]="selectedStyle.extraColor2" name="extraColor2">
+          <span>{{ selectedStyle.extraColor2 }}</span>
+        </div>
+      </div>
+
+      <h3>Tipografía</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="fontFamily">Fuente Principal</label>
+          <input type="text" id="fontFamily" [(ngModel)]="selectedStyle.fontFamily" name="fontFamily" placeholder="Ej: 'Roboto', sans-serif">
+        </div>
+        <div class="form-group">
+          <label for="fontSizeBase">Tamaño Base (px)</label>
+          <input type="number" id="fontSizeBase" [(ngModel)]="selectedStyle.fontSizeBase" name="fontSizeBase" min="10" max="24">
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="styleForm.invalid">Guardar Cambios</button>
+        <button type="button" (click)="cancelEdit()">Cancelar</button>
+      </div>
+    </form>
+  </section>
+</div>

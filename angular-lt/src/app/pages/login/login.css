@@ -54,7 +54,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background: var(--color-header-footer-hover);
+  background: var(--secondary-color);
 }
 
 .register-link {

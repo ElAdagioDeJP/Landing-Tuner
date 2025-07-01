@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms'; // Importa FormsModule
-import { CommonModule } from '@angular/common'; // Importa CommonModule
+import { Router, RouterModule } from '@angular/router'; // Importa RouterModule
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule], // Agrega FormsModule y CommonModule a los imports
+  imports: [FormsModule, CommonModule, RouterModule], // Agrega RouterModule
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })
@@ -18,15 +19,22 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
+    if (!this.credentials.username || !this.credentials.password) {
+      Swal.fire('Error', 'Por favor, ingresa usuario y contraseña', 'error');
+      return;
+    }
+
     this.authService.login(this.credentials).subscribe({
       next: (response) => {
-        console.log('Login successful', response);
-        // Redirige al dashboard o a la página principal
-        this.router.navigate(['/admin-dashboard']); // Cambia a la ruta de tu dashboard
+        Swal.fire('¡Éxito!', 'Has iniciado sesión correctamente.', 'success');
+        // Opcional: guardar token/info de usuario
+        // localStorage.setItem('token', response.token);
+        this.router.navigate(['/admin-dashboard']);
       },
       error: (error) => {
         console.error('Login failed', error);
-        this.errorMessage = 'Invalid credentials. Please try again.';
+        this.errorMessage = 'Usuario o contraseña inválidos. Inténtalo de nuevo.';
+        Swal.fire('Error de Autenticación', this.errorMessage, 'error');
       }
     });
   }
@@ -52,7 +60,7 @@ export class LoginComponent {
 ⠀⠀⠀⠀⠀⠀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀ 
 ⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀ 
 ⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠿⠿⠛⠉
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠿⠿⠿⠛⠉
 
 
 */

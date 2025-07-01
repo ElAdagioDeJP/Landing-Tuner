@@ -1,16 +1,17 @@
 <div class="login-container">
-  <form class="login-box">
+  <form class="login-box" (ngSubmit)="login()">
     <h2>Iniciar Sesión</h2>
     <div class="form-group">
-      <label for="email">Correo electrónico</label>
-      <input id="email" type="email" placeholder="ejemplo@correo.com" />
+      <label for="username">Usuario</label>
+      <input id="username" type="text" placeholder="tu-usuario" [(ngModel)]="credentials.username" name="username" required />
     </div>
     <div class="form-group">
       <label for="password">Contraseña</label>
-      <input id="password" type="password" placeholder="••••••" />
+      <input id="password" type="password" placeholder="••••••" [(ngModel)]="credentials.password" name="password" required />
     </div>
     <button type="submit">Ingresar</button>
-    <p class="register-link">¿No tienes cuenta? <a href="#">Regístrate</a></p>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <p class="register-link">¿No tienes cuenta? <a routerLink="/register">Regístrate</a></p>
   </form>
 </div>
 <!--
@@ -34,7 +35,7 @@
 ⠀⠀⠀⠀⠀⠀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀ 
 ⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀ 
 ⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠛⠉
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠿⠛⠉
 
 
 */
