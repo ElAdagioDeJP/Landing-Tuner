@@ -1,16 +1,20 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { Component } from '@angular/core';
 
-import { routes } from './app.routes';
+@Component({
+  selector: 'app-login',
+  imports: [],
+  templateUrl: './login.html',
+  styleUrl: './login.css'
+})
+export class Login {
 
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes)
-  ]
-};
+}
+
+
 /*
+
+
+
 
 ⢀⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
 ⠸⡇⠀⠿⡀⠀⠀⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
@@ -30,3 +34,9 @@ export const appConfig: ApplicationConfig = {
 
 
 */
+
+
+
+
+
+
