@@ -1,0 +1,11 @@
+<section class="carousel">
+  <div class="carousel-track-container">
+    <div class="carousel-track" [style.transform]="getTransform()">
+      <div class="slide" *ngFor="let image of images">
+        <img [src]="image" alt="Luxury property">
+      </div>
+    </div>
+  </div>
+  <button class="carousel-btn prev" (click)="scroll(-1)">‹</button>
+  <button class="carousel-btn next" (click)="scroll(1)">›</button>
+</section>

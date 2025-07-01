@@ -1,7 +1,9 @@
 <header class="site-header">
-  <h1 (click)="goToHome()">Mi Tienda</h1>
-  <button class="menu" (click)="goToLogin()">
-    iniciar sesión
-  </button>
+  <div class="logo-container">
+    <a (click)="goToHome()" class="logo">HomeLux</a>
+  </div>
+  <nav class="main-nav">
+    <a (click)="goToLogin()" class="nav-link login-link">Iniciar Sesión</a>
+  </nav>
 </header>
 

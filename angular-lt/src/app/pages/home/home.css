@@ -1,3 +1,30 @@
+:root {
+  --color-header-footer: #333;
+  --color-main-bg1: #f4f4f9;
+  --color-main-bg2: #eaeaea;
+  --accent-color: #007bff;
+  --primary-color: #fff;
+  --secondary-color: #f8f9fa;
+  --text-color: #212529;
+  --extra-color-1: #6c757d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: var(--color-main-bg1);
+}
+
+main {
+  display: block;
+}
+
 .site-header,
 .site-footer {
   background: var(--color-header-footer);
@@ -7,24 +34,110 @@
 }
 
 .site-footer {
-  font-size: 0.875rem;/* Jesus estuvo aqui*/
+  font-size: 0.875rem;
 }
 
 .banner {
-  background: url('/Bannaer.png') center/cover no-repeat, var(--color-main-bg1);
-  text-align: center;/* Jesus estuvo aqui*/
-  padding: 3rem 1rem;
+  position: relative;
+  text-align: center;
+  color: white;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://s3.amazonaws.com/thumbnails.venngage.com/template/83840a84-2f67-4924-ac58-22d736c86712.png') center/cover no-repeat;
+  filter: brightness(0.6);
+  z-index: -1;
+}
+
+.banner-content {
+  max-width: 800px;
 }
 
 .banner h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .banner p {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
-/* Jesus estuvo aqui*/
+
+.cta-button {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+.services {
+  padding: 4rem 2rem;
+  background-color: var(--secondary-color);
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-color);
+}
+
+.service-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  background-color: var(--primary-color);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.service-card p {
+  font-size: 1rem;
+  color: var(--extra-color-1);
+}
+
+/* Carousel styles */
 .carousel {
   background: var(--color-main-bg2);
   padding: 2rem 1rem 3rem;
@@ -40,7 +153,7 @@
 .carousel-track {
   display: flex;
   gap: 1rem;
-  overflow-x: auto;/* Jesus estuvo aqui*/
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -61,7 +174,7 @@
 
 .product img {
   width: 100%;
-  height: 160px;/* Jesus estuvo aqui*/
+  height: 160px;
   object-fit: cover;
   border-radius: 0.5rem 0.5rem 0 0;
 }
@@ -76,7 +189,7 @@
   padding: 0 0.75rem 1rem;
 }
 
-.carousel-btn {/* Jesus estuvo aqui*/
+.carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -95,35 +208,63 @@
   transition: 0.25s;
 }
 
-.carousel-btn:hover {/* Jesus estuvo aqui*/
+.carousel-btn:hover {
   opacity: 1;
 }
-/* Jesus estuvo aqui*/
+
 .carousel-btn.prev {
   left: 0.5rem;
 }
 
 .carousel-btn.next {
   right: 0.5rem;
-}/* Jesus estuvo aqui*/
-/*
+}
 
+/* Miscellaneous styles */
+.site-header {
+  position: relative;
+  z-index: 10;
+}
 
-⢀⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
-⠸⡇⠀⠿⡀⠀⠀⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
-⠀⠀⠀⠀⠑⢄⣠⠾⠁⣀⣄⡈⠙⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀ 
-⠀⠀⠀⠀⢀⡀⠁⠀⠀⠈⠙⠛⠂⠈⣿⣿⣿⣿⣿⠿⡿⢿⣆⠀⠀⠀⠀⠀⠀⠀ 
-⠀⠀⠀⢀⡾⣁⣀⠀⠴⠂⠙⣗⡀⠀⢻⣿⣿⠭⢤⣴⣦⣤⣹⠀⠀⠀⢀⢴⣶⣆ 
-⠀⠀⢀⣾⣿⣿⣿⣷⣮⣽⣾⣿⣥⣴⣿⣿⡿⢂⠔⢚⡿⢿⣿⣦⣴⣾⠁⠸⣼⡿ 
-⠀⢀⡞⠁⠙⠻⠿⠟⠉⠀⠛⢹⣿⣿⣿⣿⣿⣌⢤⣼⣿⣾⣿⡟⠉⠀⠀⠀⠀⠀ 
-⠀⣾⣷⣶⠇⠀⠀⣤⣄⣀⡀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ 
-⠀⠉⠈⠉⠀⠀⢦⡈⢻⣿⣿⣿⣶⣶⣶⣶⣤⣽⡹⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ 
-⠀⠀⠀⠀⠀⠀⠀⠉⠲⣽⡻⢿⣿⣿⣿⣿⣿⣿⣷⣜⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ 
-⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣷⣶⣮⣭⣽⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀ 
-⠀⠀⠀⠀⠀⠀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀ 
-⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀ 
-⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠛⠉
+.site-footer {
+  font-size: 0.875rem;
+  padding: 2rem 0;
+  background-color: var(--color-header-footer);
+  color: #fff;
+  text-align: center;
+}
 
+.site-footer a {
+  color: #fff;
+  text-decoration: underline;
+}
 
-*/
+@media (max-width: 768px) {
+  .banner h1 {
+    font-size: 2.5rem;
+  }
+
+  .banner p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 0.5rem 1rem;
+  }
+
+  .services h2 {
+    font-size: 2rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .service-card p {
+    font-size: 0.875rem;
+  }
+}

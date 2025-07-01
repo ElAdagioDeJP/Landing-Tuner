@@ -1,50 +1,29 @@
-
-
 <main>
   <section class="banner">
-    
-
-    <h1>¡Bienvenido!</h1>
-    <p >
-      <!--Jesus estuvo aqui-->
-      
-⢀⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ <br>
-⠸⡇⠀⠿⡀⠀⠀⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀ <br>
-⠀⠀⠀⠀⠑⢄⣠⠾⠁⣀⣄⡈⠙⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀ <br>
-⠀⠀⠀⠀⢀⡀⠁⠀⠀⠈⠙⠛⠂⠈⣿⣿⣿⣿⣿⠿⡿⢿⣆⠀⠀⠀⠀⠀⠀⠀ <br>
-⠀⠀⠀⢀⡾⣁⣀⠀⠴⠂⠙⣗⡀⠀⢻⣿⣿⠭⢤⣴⣦⣤⣹⠀⠀⠀⢀⢴⣶⣆ <br>
-⠀⠀⢀⣾⣿⣿⣿⣷⣮⣽⣾⣿⣥⣴⣿⣿⡿⢂⠔⢚⡿⢿⣿⣦⣴⣾⠁⠸⣼⡿ <br>
-⠀⢀⡞⠁⠙⠻⠿⠟⠉⠀⠛⢹⣿⣿⣿⣿⣿⣌⢤⣼⣿⣾⣿⡟⠉⠀⠀⠀⠀⠀ <br>
-⠀⣾⣷⣶⠇⠀⠀⣤⣄⣀⡀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ <br>
-⠀⠉⠈⠉⠀⠀⢦⡈⢻⣿⣿⣿⣶⣶⣶⣶⣤⣽⡹⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ <br>
-⠀⠀⠀⠀⠀⠀⠀⠉⠲⣽⡻⢿⣿⣿⣿⣿⣿⣿⣷⣜⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀ <br>
-⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣷⣶⣮⣭⣽⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀ <br>
-⠀⠀⠀⠀⠀⠀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀ <br>
-⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀ <br>
-⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀ <br>
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠛⠉<br>
-
-
-    </p>
-    <p>Descubre nuestros productos destacados de esta semana.</p>
-  </section>
-  <!--Jesus estuvo aqui-->
-  <section class="carousel">
-    <h2>Nuevas llegadas</h2>
-
-    <button class="carousel-btn prev" (click)="scroll(-step)">‹</button>
-
-    <div class="carousel-track" #track>
-      <article class="product" *ngFor="let p of products">
-       <!--Jesus estuvo aqui-->
-        <h3>{{ p.name }}</h3>
-        <p>{{ p.description }}</p>
-        <img src="https://placehold.co/600x400/EEE/31343C" alt="">
-      </article>
+    <div class="banner-content">
+      <h1>Encuentra la Propiedad de Tus Sueños</h1>
+      <p>Explora nuestro catálogo de propiedades exclusivas y encuentra el lugar perfecto para ti.</p>
     </div>
+  </section>
 
+  <app-carousel></app-carousel>
 
-    <button class="carousel-btn next" (click)="scroll(step)">›</button>
+  <section class="services">
+    <h2>Nuestros Servicios</h2>
+    <div class="service-cards">
+      <div class="service-card">
+        <h3>Venta de Propiedades</h3>
+        <p>Te ayudamos a encontrar la casa de tus sueños con un proceso de compra simplificado y transparente.</p>
+      </div>
+      <div class="service-card">
+        <h3>Alquiler de Lujo</h3>
+        <p>Descubre propiedades exclusivas para estancias inolvidables, con todas las comodidades que mereces.</p>
+      </div>
+      <div class="service-card">
+        <h3>Asesoría Financiera</h3>
+        <p>Te guiamos en cada paso del proceso de inversión inmobiliaria para que tomes las mejores decisiones.</p>
+      </div>
+    </div>
   </section>
 </main>
 
