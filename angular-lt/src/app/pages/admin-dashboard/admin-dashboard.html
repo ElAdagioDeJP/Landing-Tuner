@@ -20,15 +20,17 @@
             <td>{{ style.name }}</td>
             <td><span [class.active]="style.isActive">{{ style.isActive ? 'Sí' : 'No' }}</span></td>
             <td class="actions">
-              <button (click)="selectStyle(style)" aria-label="Editar estilo {{ style.name }}">Editar</button>
-              <button (click)="deleteStyle(style.id)" class="delete" aria-label="Eliminar estilo {{ style.name }}">Eliminar</button>
-              <button (click)="activateStyle(style)" [disabled]="style.isActive" aria-label="Activar estilo {{ style.name }}">Activar</button>
+              <button (click)="selectStyle(style)" [attr.aria-label]="'Editar estilo ' + style.name">Editar</button>
+              <button (click)="deleteStyle(style.id)" class="delete" [attr.aria-label]="'Eliminar estilo ' + style.name">Eliminar</button>
+              <button (click)="activateStyle(style)" [disabled]="style.isActive" [attr.aria-label]="'Activar estilo ' + style.name">Activar</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     <button (click)="createStyle()" class="create-new">Crear Nuevo Estilo</button>
+    <button routerLink="/user-wizard" class="create-new">Crear Usuario (Wizard)</button>
+    <button routerLink="/user-datatable" class="create-new">Ver Usuarios (Datatable)</button>
   </section>
 
   <section *ngIf="selectedStyle" class="style-editor">

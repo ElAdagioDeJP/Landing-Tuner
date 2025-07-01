@@ -1,13 +1,4 @@
-:root {
-  --color-header-footer: #333;
-  --color-main-bg1: #f4f4f9;
-  --color-main-bg2: #eaeaea;
-  --accent-color: #007bff;
-  --primary-color: #fff;
-  --secondary-color: #f8f9fa;
-  --text-color: #212529;
-  --extra-color-1: #6c757d;
-}
+
 
 * {
   box-sizing: border-box;
@@ -18,29 +9,19 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: var(--color-main-bg1);
+  background-color: var(--extra-color-1);
 }
 
 main {
   display: block;
 }
 
-.site-header,
-.site-footer {
-  background: var(--color-header-footer);
-  color: #fff;
-  text-align: center;
-  padding: 1rem 2rem;
-}
 
-.site-footer {
-  font-size: 0.875rem;
-}
 
 .banner {
   position: relative;
   text-align: center;
-  color: white;
+  color: var(--extra-color-1);
   height: 60vh;
   display: flex;
   flex-direction: column;
@@ -89,7 +70,8 @@ main {
 }
 
 .cta-button:hover {
-  background-color: #0056b3;
+  background-color: var(--primary-color);
+  color: var(--accent-color);
 }
 
 .services {
@@ -112,7 +94,7 @@ main {
 }
 
 .service-card {
-  background-color: var(--primary-color);
+  background-color: var(--extra-color-2);
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -139,7 +121,7 @@ main {
 
 /* Carousel styles */
 .carousel {
-  background: var(--color-main-bg2);
+  background: var(--accent-color);
   padding: 2rem 1rem 3rem;
   position: relative;
   overflow: hidden;
@@ -193,9 +175,9 @@ main {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--color-header-footer);
+  background: var(--primary-color);
   border: none;
-  color: #fff;
+  color:  var(--accent-color);
   width: 38px;
   height: 38px;
   border-radius: 50%;

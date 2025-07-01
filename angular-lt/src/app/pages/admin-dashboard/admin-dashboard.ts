@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router'; // Importa RouterModule
 import { StyleService, Style } from '../../services/style.service';
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule], // Agrega RouterModule aquí
   templateUrl: './admin-dashboard.html',
   styleUrls: ['./admin-dashboard.css']
 })

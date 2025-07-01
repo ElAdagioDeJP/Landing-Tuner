@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="header-section">
+    <div>
+      <h1 class="main-title">User DataTable</h1>
+      <h2>Usuarios</h2>
+      <p>Gestiona los usuarios de la plataforma.</p>
+    </div>
+    <div class="table-controls-top">
+      <div id="buttons-container" class="buttons-container"></div>
+    </div>
+  </div>
+  <div class="table-controls-below">
+    <label for="entriesSelect">Mostrar
+      <select id="entriesSelect" [(ngModel)]="entriesToShow">
+        <option *ngFor="let n of [5,10,25,50,100]" [value]="n">{{n}}</option>
+      </select>
+      entradas
+    </label>
+  </div>
+  <table id="usersTable" class="display responsive nowrap" style="width:100%">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <span class="status" [ngClass]="{'status-active': user.isActive, 'status-inactive': !user.isActive}">
+            {{ user.isActive ? 'Activo' : 'Inactivo' }}
+          </span>
+        </td>
+        <td class="actions">
+          <button (click)="viewUser(user)" class="action-btn view-btn" aria-label="Ver detalles del usuario">
+            <i class="fas fa-eye"></i> Ver
+          </button>
+          <button (click)="toggleUserStatus(user)" class="action-btn" [ngClass]="{'deactivate-btn': user.isActive, 'activate-btn': !user.isActive, 'active-accent': user.isActive}" [attr.aria-label]="user.isActive ? 'Desactivar usuario' : 'Activar usuario'">
+            <i class="fas" [ngClass]="{'fa-toggle-off': user.isActive, 'fa-toggle-on': !user.isActive}"></i>
+            {{ user.isActive ? 'Desactivar' : 'Activar' }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

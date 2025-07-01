@@ -32,8 +32,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--accent-color);
   border: none;
   padding: 1rem;
   cursor: pointer;
@@ -46,10 +46,12 @@
   align-items: center;
   font-size: 1.5rem;
   transition: background-color 0.3s ease;
+  
 }
 
 .carousel-btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--accent-color);
+  color: var(--primary-color);
 }
 
 .prev {

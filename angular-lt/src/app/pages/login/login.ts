@@ -33,7 +33,12 @@ export class LoginComponent {
       },
       error: (error) => {
         console.error('Login failed', error);
-        this.errorMessage = 'Usuario o contraseña inválidos. Inténtalo de nuevo.';
+        // Comprobar el mensaje de error específico para usuario inactivo
+        if (error.status === 403 && error.error?.msg) {
+          this.errorMessage = error.error.msg;
+        } else {
+          this.errorMessage = 'Usuario o contraseña inválidos. Inténtalo de nuevo.';
+        }
         Swal.fire('Error de Autenticación', this.errorMessage, 'error');
       }
     });

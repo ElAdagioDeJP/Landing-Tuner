@@ -1,0 +1,268 @@
+<h1>Asistente de Creación de Usuario</h1>
+<div class="wizard-container">
+  <div class="wizard-header">
+    <h2>Asistente de Creación de Usuario</h2>
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="(currentStep / totalSteps) * 100"></div>
+      <div class="step-markers">
+        <button *ngFor="let step of [].constructor(totalSteps); let i = index" 
+              type="button"
+              class="step-marker" 
+              [class.active]="i + 1 <= currentStep" 
+              (click)="goToStep(i + 1)"
+              [attr.aria-label]="'Ir al paso ' + (i + 1)">
+          {{ i + 1 }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+    <!-- Paso 1: Información Básica -->
+    <div *ngIf="currentStep === 1">
+      <h3>Paso 1: Información Básica</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="firstName">Nombre</label>
+          <input type="text" id="firstName" name="firstName" [(ngModel)]="user.first_name" required #firstName="ngModel">
+          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="error-message">
+            El nombre es requerido.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Apellido Paterno</label>
+          <input type="text" id="lastName" name="lastName" [(ngModel)]="user.last_name" required #lastName="ngModel">
+          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="error-message">
+            El apellido paterno es requerido.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="maidenName">Apellido Materno</label>
+          <input type="text" id="maidenName" name="maidenName" [(ngModel)]="user.maiden_name">
+        </div>
+        <div class="form-group">
+          <label for="gender">Género</label>
+          <select id="gender" name="gender" [(ngModel)]="user.gender" required #gender="ngModel">
+            <option value="" disabled selected>Selecciona un género</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+          </select>
+          <div *ngIf="gender.invalid && (gender.dirty || gender.touched)" class="error-message">
+            El género es requerido.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo Electrónico</label>
+          <input type="email" id="email" name="email" [(ngModel)]="user.email" required email #email="ngModel">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+            <span *ngIf="email.errors?.['required']">El correo es requerido.</span>
+            <span *ngIf="email.errors?.['email']">Ingresa un correo válido.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Teléfono</label>
+          <input type="text" id="phone" name="phone" [(ngModel)]="user.phone">
+        </div>
+        <div class="form-group">
+          <label for="username">Nombre de Usuario</label>
+          <input type="text" id="username" name="username" [(ngModel)]="user.username" required #username="ngModel">
+          <div *ngIf="username.invalid && (username.dirty || username.touched)" class="error-message">
+            El nombre de usuario es requerido.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" [(ngModel)]="user.password" required minlength="6" #password="ngModel">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+            <span *ngIf="password.errors?.['required']">La contraseña es requerida.</span>
+            <span *ngIf="password.errors?.['minlength']">Debe tener al menos 6 caracteres.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 2: Detalles Personales -->
+    <div *ngIf="currentStep === 2">
+      <h3>Paso 2: Detalles Personales</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="birthDate">Fecha de Nacimiento</label>
+          <input type="date" id="birthDate" name="birthDate" [(ngModel)]="user.birth_date" placeholder="YYYY-MM-DD" required #birthDate="ngModel">
+          <div *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)" class="error-message">
+            La fecha de nacimiento es requerida.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="imageUrl">URL de la Imagen</label>
+          <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="user.image_url">
+        </div>
+        <div class="form-group">
+          <label for="bloodGroup">Grupo Sanguíneo</label>
+          <input type="text" id="bloodGroup" name="bloodGroup" [(ngModel)]="user.blood_group">
+        </div>
+        <div class="form-group">
+          <label for="height">Altura (cm)</label>
+          <input type="number" id="height" name="height" [(ngModel)]="user.height">
+        </div>
+        <div class="form-group">
+          <label for="weight">Peso (kg)</label>
+          <input type="number" id="weight" name="weight" [(ngModel)]="user.weight">
+        </div>
+        <div class="form-group">
+          <label for="eyeColor">Color de Ojos</label>
+          <input type="text" id="eyeColor" name="eyeColor" [(ngModel)]="user.eye_color">
+        </div>
+        <div class="form-group">
+          <label for="hairColor">Color de Cabello</label>
+          <input type="text" id="hairColor" name="hairColor" [(ngModel)]="user.hair_color">
+        </div>
+        <div class="form-group">
+          <label for="hairType">Tipo de Cabello</label>
+          <input type="text" id="hairType" name="hairType" [(ngModel)]="user.hair_type">
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 3: Dirección -->
+    <div *ngIf="currentStep === 3">
+      <h3>Paso 3: Dirección</h3>
+      <p>Haz clic en el mapa para seleccionar tu ubicación. Puedes hacer zoom y arrastrar el mapa.</p>
+      <div id="map-container">
+        <div id="map"></div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="address">Dirección</label>
+          <input type="text" id="address" name="address" [(ngModel)]="user.address.address" required>
+        </div>
+        <div class="form-group">
+          <label for="city">Ciudad</label>
+          <input type="text" id="city" name="city" [(ngModel)]="user.address.city" required>
+        </div>
+        <div class="form-group">
+          <label for="state">Estado</label>
+          <input type="text" id="state" name="state" [(ngModel)]="user.address.state" required>
+        </div>
+        <div class="form-group">
+          <label for="postalCode">Código Postal</label>
+          <input type="text" id="postalCode" name="postalCode" [(ngModel)]="user.address.postal_code" required>
+        </div>
+        <div class="form-group">
+          <label for="country">País</label>
+          <input type="text" id="country" name="country" [(ngModel)]="user.address.country" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 4: Información de la Empresa -->
+    <div *ngIf="currentStep === 4">
+      <h3>Paso 4: Información de la Empresa</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="companyName">Nombre de la Empresa</label>
+          <input type="text" id="companyName" name="companyName" [(ngModel)]="user.company.name">
+        </div>
+        <div class="form-group">
+          <label for="department">Departamento</label>
+          <input type="text" id="department" name="department" [(ngModel)]="user.company.department">
+        </div>
+        <div class="form-group">
+          <label for="title">Cargo</label>
+          <input type="text" id="title" name="title" [(ngModel)]="user.company.title">
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 5: Información Bancaria -->
+    <div *ngIf="currentStep === 5">
+      <h3>Paso 5: Información Bancaria</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="cardNumber">Número de Tarjeta</label>
+          <input type="text" id="cardNumber" name="cardNumber" [(ngModel)]="user.bank.card_number" mask="0000 0000 0000 0000">
+        </div>
+        <div class="form-group">
+          <label for="cardExpire">Expiración</label>
+          <input type="text" id="cardExpire" name="cardExpire" [(ngModel)]="user.bank.card_expire" mask="00/00" placeholder="MM/YY">
+        </div>
+        <div class="form-group">
+          <label for="cardType">Tipo de Tarjeta</label>
+          <select id="cardType" name="cardType" [(ngModel)]="user.bank.card_type" required #cardType="ngModel">
+            <option value="" disabled>Selecciona un tipo</option>
+            <option value="visa">Visa</option>
+            <option value="mastercard">Mastercard</option>
+            <option value="amex">American Express</option>
+            <option value="discover">Discover</option>
+          </select>
+          <div *ngIf="cardType.invalid && (cardType.dirty || cardType.touched)" class="error-message">
+            El tipo de tarjeta es requerido.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="currency">Moneda</label>
+          <input type="text" id="currency" name="currency" [(ngModel)]="user.bank.currency">
+        </div>
+        <div class="form-group">
+          <label for="iban">IBAN</label>
+          <input type="text" id="iban" name="iban" [(ngModel)]="user.bank.iban" mask="SS00 0000 0000 0000 0000 0000 000">
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 6: Información Cripto -->
+    <div *ngIf="currentStep === 6">
+      <h3>Paso 6: Información Cripto</h3>
+       <div class="form-grid">
+        <div class="form-group">
+          <label for="coin">Moneda Digital</label>
+          <input type="text" id="coin" name="coin" [(ngModel)]="user.crypto.coin">
+        </div>
+        <div class="form-group">
+          <label for="wallet">Wallet</label>
+          <input type="text" id="wallet" name="wallet" [(ngModel)]="user.crypto.wallet">
+        </div>
+        <div class="form-group">
+          <label for="network">Red</label>
+          <input type="text" id="network" name="network" [(ngModel)]="user.crypto.network">
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 7: Información Adicional -->
+    <div *ngIf="currentStep === 7">
+      <h3>Paso 7: Información Adicional</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="ip">Dirección IP</label>
+          <input type="text" id="ip" name="ip" [(ngModel)]="user.ip">
+        </div>
+        <div class="form-group">
+          <label for="macAddress">Dirección MAC</label>
+          <input type="text" id="macAddress" name="macAddress" [(ngModel)]="user.mac_address">
+        </div>
+        <div class="form-group">
+          <label for="university">Universidad</label>
+          <input type="text" id="university" name="university" [(ngModel)]="user.university">
+        </div>
+        <div class="form-group">
+          <label for="ein">EIN</label>
+          <input type="text" id="ein" name="ein" [(ngModel)]="user.ein">
+        </div>
+        <div class="form-group">
+          <label for="ssn">SSN</label>
+          <input type="text" id="ssn" name="ssn" [(ngModel)]="user.ssn">
+        </div>
+        <div class="form-group">
+          <label for="userAgent">User Agent</label>
+          <textarea id="userAgent" name="userAgent" [(ngModel)]="user.user_agent"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="wizard-footer">
+      <button type="button" (click)="prevStep()" [disabled]="currentStep === 1">Anterior</button>
+      <button type="button" (click)="nextStep()" [disabled]="currentStep === totalSteps">Siguiente</button>
+      <button type="submit" *ngIf="currentStep === totalSteps" [disabled]="!userForm.form.valid">Crear Usuario</button>
+    </div>
+  </form>
+</div>

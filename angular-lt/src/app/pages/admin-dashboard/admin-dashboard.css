@@ -1,6 +1,6 @@
 .dashboard-container {
   padding: 2rem;
-  background-color: var(--background-color, #f8f9fa); /* Fondo neutro */
+  background-color: var(--extra-color1); /* Fondo neutro */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -44,10 +44,26 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1.5rem;
+  table-layout: fixed;
+}
+
+/* Ancho de columnas: primera 40%, las otras dos 30% */
+table th:first-child,
+table td:first-child {
+  width: 40%;
+}
+table th:nth-child(2),
+table td:nth-child(2) {
+  width: 30%;
+}
+table th:nth-child(3),
+table td:nth-child(3) {
+  width: 30%;
+  
 }
 
 th, td {
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--extra-color2);
   padding: 1rem;
   text-align: left;
   vertical-align: middle;
@@ -55,17 +71,14 @@ th, td {
 
 th {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--accent-color);
   font-weight: 600;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #e9ecef;
+  background-color: var(--secondary-color);
 }
 
-tbody tr:hover {
-    background-color: #e9ecef;
-}
 
 .active {
   color: var(--success-color);
@@ -81,7 +94,7 @@ button {
   font-weight: 500;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   margin-right: 0.5rem;
-  color: white;
+  color: var(--text-color);
 }
 
 button:hover {
@@ -89,28 +102,41 @@ button:hover {
 }
 
 button:disabled {
-    background-color: #ccc;
+    background-color:   var(--disabled-color);
     cursor: not-allowed;
 }
 
 button.create-new {
-  background-color: var(--success-color);
+  background-color: var(--accent-color);
 }
 
 button.delete {
-  background-color: var(--error-color);
+  background-color: var(--extra-color1);
+  border: 1px solid var(--text-color);
 }
 
 td button {
-    background-color: var(--primary-color);
+    background-color: var(--extra-color1);
+    border: 1px solid var(--text-color);
+}
+
+td button:hover {
+    background-color: var(--accent-color);
+    color: var(--extra-color1);
 }
 
 td button.delete {
-    background-color: var(--error-color);
+    background-color: var(--extra-color2);
+    border: 1px solid var(--text-color);
+}
+td button.delete:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
 
 td button:disabled {
-    background-color: var(--secondary-color);
+    background-color: var(--accent-color);
+    border: 1px solid var(--text-color);
 }
 
 .style-editor form {
@@ -126,7 +152,7 @@ td button:disabled {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: var(--text-color); /* Color de texto principal para etiquetas */
+  color: var(--extra-color2); /* Color de texto principal para etiquetas */
 }
 
 .form-group input[type="text"],
@@ -162,7 +188,7 @@ td button:disabled {
 .color-group span {
     margin-top: 0.5rem;
     font-family: monospace;
-    background-color: #eee;
+    background-color: var(--secondary-color);
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
 }
@@ -174,13 +200,14 @@ td button:disabled {
 }
 
 .form-actions button {
+    background-color: var(--accent-color);
     min-width: 120px;
 }
 
 .form-actions button[type="submit"] {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
 }
 
 .form-actions button[type="button"] {
-    background-color: var(--secondary-color);
+    background-color: var(--accent-color);
 }

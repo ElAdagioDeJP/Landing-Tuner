@@ -251,7 +251,7 @@ def create_user():
                 'phone': data.get('phone'),
                 'username': data['username'],
                 'birth_date': birth_date,
-                'image_url': data.get('image'),
+                'image_url': data.get('image_url'),
                 'blood_group': data.get('blood_group'),
                 'height': data.get('height'),
                 'weight': data.get('weight'),
@@ -327,6 +327,8 @@ def login():
     data = request.get_json()
     user = User.query.filter_by(username=data.get('username')).first()
     if user and user.check_password(data.get('password')):
+        if not user.is_active:
+            return jsonify({"msg": "El usuario está inactivo y no puede iniciar sesión."}), 403 # Forbidden
         # Ya no se crea un token, solo se devuelve el rol para que el frontend sepa si es admin
         return jsonify(role=user.role.name)
     return jsonify({"msg": "Bad username or password"}), 401
